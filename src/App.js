@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {BrowserRouter, Routes,Route} from 'react-router-dom'
+import Addpro from './Comp/Addpro'
+import Addimages from './Comp/Addimages'
+import Product from './Comp/Product'
+import Updatepro from './Comp/Updatepro'
+import Updateimage from '../src/Comp/UpdateImage'
+import Home from './page/Home'
 
-function App() {
+import Imageproducts from './Comp/Imageproduct'
+import PrivateComponent from './Comp/PrivateComponent'
+import Login from './Comp/Login'
+
+
+export default function App() { 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+    <BrowserRouter>
+    
+    <Routes>
+      <Route element={<PrivateComponent/>}>
+      <Route path='/home' element={<Home/>}/>
+      <Route path='/image' element={<Imageproducts/>}/>
+      <Route path='/' element={<Product/>}/>
+      <Route path='/addpro' element={<Addpro/>}/>
+      <Route path='/addimages' element={<Addimages/>}/>
+      <Route path='/update/:id' element={<Updatepro/>}/>
+      <Route path='/updateimage/:id' element={<Updateimage/>}/>
+</Route>
 
-export default App;
+   
+      <Route path='/signin' element={<Login/>}/>
+ 
+ 
+    </Routes>
+    
+    </BrowserRouter>
+    
+    
+    </>
+  )
+}
